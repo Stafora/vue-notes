@@ -9,8 +9,8 @@
         :noteItem="noteItem"
         :key="index"
 
-        @removeItem="removeItem"
-        @updateItem="updateItem"
+        v-on:removeItem="removeItem"
+        v-on:updateItem="updateItem"
       />
 
       <AddNoteItem @addItem="addItem" />
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import NoteItem from '@/components/NoteItem.vue'
 import AddNoteItem from '@/components/AddNoteItem.vue'
 import { NoteService } from '../services/NoteService'
