@@ -29,15 +29,36 @@ import ConfirmDialogue from '@/components/ConfirmDialogue.vue'
 
 export default {
   name: "Home",
+  /** 
+   * DATE
+   */
   data() {
     return {
       notes: {},
     }
   },
+  /**
+   * COMPONENTS
+   */
+  components: {
+    NoteItem,
+    AddNoteItem,
+    ConfirmDialogue
+  },
+  /**
+   * MOUNTED
+   */
   mounted() {
     this.notes = NoteService.getAll();
   },
+  /**
+   * METHODS
+   */
   methods: {
+    /**
+     * @param {String} id
+     * @param {Object} noteItem
+     */
     async updateItem(id, noteItem){
       let ok = await this.$refs.confirmDialogue.show({
             title: 'Обновление записи',
@@ -48,6 +69,9 @@ export default {
         NoteService.updateItem(id, noteItem);
       }
     },      
+    /**
+     * @param {String} id
+     */
     async removeItem(id){
       let ok = await this.$refs.confirmDialogue.show({
             title: 'Удалиние записи',
@@ -67,11 +91,6 @@ export default {
       this.notes.push(item);
     }
   },
-  components: {
-    NoteItem,
-    AddNoteItem,
-    ConfirmDialogue
-  }
 }
 </script>
 

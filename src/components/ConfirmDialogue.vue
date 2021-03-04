@@ -14,7 +14,9 @@ import PopupModal from './PopupModal.vue'
 
 export default {
     name: 'ConfirmDialogue',
-    components: { PopupModal },
+    /**
+     * DATA
+     */
     data: () => ({
         title: undefined,
         message: undefined,
@@ -24,7 +26,19 @@ export default {
         resolvePromise: undefined,
         rejectPromise: undefined,
     }),
+    /**
+     * COMPONENTS
+     */
+    components: { 
+        PopupModal 
+    },
+    /**
+     * METHODS
+     */
     methods: {
+        /**
+         * @param {Object} opts with title, message, okButton - string
+         */
         show(opts = {}) {
             this.title = opts.title
             this.message = opts.message
@@ -38,12 +52,10 @@ export default {
                 this.rejectPromise = reject
             })
         },
-
         _confirm() {
             this.$refs.popup.close()
             this.resolvePromise(true)
         },
-
         _cancel() {
             this.$refs.popup.close()
             this.resolvePromise(false)

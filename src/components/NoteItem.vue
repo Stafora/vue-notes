@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import { NoteService } from '../services/NoteService';
 export default {
     name: 'NoteItem',
     props: {
@@ -70,16 +69,22 @@ export default {
         }
     },
     methods: {
+        /**
+         * @param {String} todosId
+         */
         removeTodosInItem: function(todosId){
             this.noteItem.todos.splice(todosId, 1);
         },
+        /** for parent */
         updateItem: function() {
             this.$emit('updateItem', this.noteItem.id, this.noteItem);
             this.availableSave = false;
         },
+        /** for parent */
         removeItem: function() {
             this.$emit('removeItem', this.noteItem.id);
         },
+        /** create new empty todo */
         addTodos: function() {
             this.noteItem.todos.push('');
         }

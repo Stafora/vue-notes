@@ -7,7 +7,11 @@
 <script>
   export default {
     name: 'AddNoteItem',
+    /**
+     * METHODS
+     */
     methods: {
+      /** for parent */
       addNewNote: function(){
         this.$emit('addItem');
       }
